@@ -6,26 +6,65 @@
   },
   "story": {
     "heading": "Who We Are",
-    "body": "We are a community of seekers, founded in 1871, who covenant to support one another in the search for truth and meaning. As Unitarian Universalists, we draw wisdom from many sources and welcome people of every belief, background, age, ability, race, and sexual orientation. Our only creed is love."
+    "body": "UU Wellesley Hills is a community, a place where we walk through life together.   The glue that holds us together is the Unitarian Universalist faith, centered on love, acknowledging the worth of every person. We teach each other through word and example, share joys and sorrows and offer support, and bring our values into the wider community through witness and service. Each of us finds our own way to express and nurture what is core to our being.\n \nEach individual is free to form their own beliefs based on personal experience.  Our only creed is love, and our religious practice is love. We welcome believers, seekers, and doubters of all backgrounds, and are a hospitable space for multi-faith families and LGBTQ+ people."
   },
   "mission": {
     "heading": "Our Mission",
-    "body": "Building a community of faith that inspires spiritual growth and just and responsible action in our lives and in the world."
+    "body": "Our Mission is to build a Community of Faith that Inspires Spiritual Growth, Just and Responsible Action, and Lives of Compassion,\nPurpose, and Hope."
   },
   "uu": {
     "heading": "What is Unitarian Universalism?",
-    "body": "Unitarian Universalism is a liberal religious tradition that encourages each person to follow their own spiritual path. We are bound not by a shared doctrine but by shared values — love, justice, equity, transformation, pluralism, interdependence, and generosity."
+    "body": "\n\nUU Wellesley Hills is a self-governing member of the Unitarian Universalist Association (UUA).\nOur Partners in Faith:\nUU Wellesley Hills has a long history of engagement with Unitarian Universalist organizations. We maintain partnerships with local, national and international Unitarian/Universalist groups to promote our shared values and principles.\n\nOur current affiliations include the UU Service Committee (UUSC) the UU Urban Ministry (UUUM), UU Mass Action, and the \nUnitarian Universalist Association’s Office of Global Connections and Emerging Communities. Our global connections include our Unitarian Partner Church in Torockó, Romania, and the Unitarian Church of Burundi, Africa. We routinely support all of these organizations through our active involvement and through plate collections funding their work.. Additionally, we contribute regularly to the UUA’s Disaster Relief Fund to provide emergency assistance to congregations across the US."
   },
   "land": {
     "heading": "Land Acknowledgment",
-    "body": "We acknowledge that our meetinghouse stands on the traditional land of the Massachusett people. Our Indigenous Peoples' Task Force works to honor this history and support Indigenous communities today."
+    "body": "We voted unanimously in June 2022 to adopt a Land Acknowledgment to recognize the ongoing erasure of Indigenous Peoples’ experience and culture into the present."
   },
   "leadership": {
     "heading": "Our Leadership",
     "people": [
-      { "name": "Rev. Mark Robel", "role": "Minister", "email": "minister@uuwellesley.org" },
-      { "name": "Director of Music", "role": "Music Ministry", "email": "music@uuwellesley.org" },
-      { "name": "Church Office", "role": "Administration", "email": "info@uuwellesley.org" }
+      {
+        "name": "Rev. Mark Robel",
+        "role": "Minister",
+        "email": "minister@uuwellesley.org",
+        "image": "assets/img/mark-photo2-edited-jpg-1782839731893.jpg"
+      },
+      {
+        "name": "Rev. Dr. John H. Nichols",
+        "role": "Minister Emeritus",
+        "email": "uujhnichols@gmail.com",
+        "image": "assets/img/john-nichols-lr-240x300-edited-edited-jp-1782839804884.jpg"
+      },
+      {
+        "name": "Terry Dixon",
+        "role": "Summer Lay Minister",
+        "email": "terrydixon@hds.harvard.edu",
+        "image": "assets/img/9cc14a-6540e4edceb64046955ac83dcdf99df7--1782839864126.jpg"
+      },
+      {
+        "name": "Suzanne Cartreine",
+        "role": "Music Director",
+        "email": "music@uuwellesley.org",
+        "image": "assets/img/tyler-261x300-edited-1782839926930.jpg"
+      },
+      {
+        "name": "Olivia Thompson",
+        "role": "Administrative Associate",
+        "email": "info@uuwellesley.org",
+        "image": "assets/img/4ad4b0ea-5fbf-4182-a991-bbcba325b555-edi-1782839965694.jpg"
+      },
+      {
+        "name": "April Rosario",
+        "role": "Director of Spiritual Development & Engagement",
+        "email": "april.rosario@uuwellesley.org",
+        "image": "assets/img/img-8901-edited-edited-1782840022963.jpg"
+      },
+      {
+        "name": "Steve Fogg",
+        "role": "Sexton",
+        "email": "sexton@uuwellesley.org ",
+        "image": "assets/img/afc5d51c-b1f6-4a89-8c0b-520eacbeb795-1782840073332.jpg"
+      }
     ]
   }
 }
