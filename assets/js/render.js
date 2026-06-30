@@ -43,6 +43,17 @@
       .catch(function () { return null; });
   }
 
+  // Admin preview: when the page is opened with ?preview=1, use any draft
+  // data the admin stashed in localStorage instead of the committed file.
+  function isPreview() { return /[?&]preview=1\b/.test(location.search); }
+  function previewOverride(name) {
+    if (!isPreview()) return null;
+    try {
+      var raw = localStorage.getItem("uuwh-preview:" + name);
+      return raw ? JSON.parse(raw) : null;
+    } catch (_) { return null; }
+  }
+
   function bindElement(el, ctx) {
     var v;
     if (el.hasAttribute("data-bind")) {
@@ -128,7 +139,11 @@
 
     return Promise.all(jobs).then(function (res) {
       var ctx = {};
-      names.forEach(function (n, i) { ctx[n] = res[i] || {}; });
+      names.forEach(function (n, i) {
+        // page data file is named after the page; others share their name
+        var fileName = (n === "page" && page) ? page : n;
+        ctx[n] = previewOverride(fileName) || res[i] || {};
+      });
       // default (empty) namespace for page templates is the page data
       ctx[""] = ctx.page || {};
       walk(document, ctx);
