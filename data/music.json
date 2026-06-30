@@ -2,16 +2,29 @@
   "header": {
     "eyebrow": "Worship & Music",
     "title": "Music",
-    "lead": "Music is an integral part of our spiritual and cultural life — and our sanctuary's acoustics are a joy to sing in."
+    "lead": "Music has always been an integral part of our spiritual and cultural life at UU Wellesley Hills.​"
   },
-  "intro": "We welcome singers and instrumentalists of all kinds, members and non-members alike, to share in our music ministry.",
+  "intro": "\nMusic has long been a cherished component of worship at UU Wellesley Hills. Each week, a range of music complements and enhances the service. Organ, piano, and choral music make up the bulk of our Sunday offerings, supplemented by guest instrumentalists and several artists-in-residence. Our Sanctuary has superb acoustics, which enhance artists’ performances during Sunday worship and many special events.\n​\nYou need not be a member of the congregation to participate in our music program. All singers and instrumentalists are welcome.",
   "ensembles": {
     "heading": "Ensembles & Programs",
     "items": [
-      { "title": "Choir", "text": "Rehearses Wednesdays 7:00–8:45pm and Sundays at 9:00am (three Sundays a month). New voices always welcome." },
-      { "title": "Choir 101", "text": "An introductory program offered each October, or by request — a gentle on-ramp to choral singing." },
-      { "title": "Community Messiah Sing", "text": "Our beloved annual December gathering to sing Handel's Messiah together." },
-      { "title": "Concert Series", "text": "Launched in Fall 2023, bringing guest artists and ensembles to our sanctuary." }
+      {
+        "title": "Choir",
+        "text": "Rehearses Wednesdays 7:00–8:45pm and Sundays at 9:00am (three Sundays a month). New voices always welcome.\n\n\nUU Wellesley Hills has a rich choral heritage. Our choir sings a broad range of repertoire, drawn from the last ten centuries and representing a variety of cultures, languages, and musical styles. Rehearsals are designed to be engaging, challenging, and enjoyable – a respite from your busy week. People of high-school age and older are welcome, regardless of experience.\n \nWe sing for services most Sundays, with the support of our professional section leaders.",
+        "image": "assets/img/9cc14a-02f04f0a40e94791b657e5796b7621f3--1782839149924.jpg"
+      },
+      {
+        "title": "Choir 101",
+        "text": "Choir 101 is offered every October or by request.\n\nThis course, for people of high school age and older, covers basic music terminology and symbols, and gives less-experienced singers a chance to explore their voices in a small group setting. \n \nChoir 101 can be a stepping stone to joining Adult Choir, though by no means a requirement. \n\n"
+      },
+      {
+        "title": "Community Messiah Sing",
+        "text": "The Community Messiah Sing is an annual December event hosted by UUWH.\n\n\nAll ages from the community and congregation are invited to our Sanctuary to enjoy this seasonal classic, whether singing along or listening.  Entry is always free, though donations are greatly appreciated.\n \nThe performance features professional soloists and a chamber orchestra, with UUWH Music Director Suzie Cartreine conducting and playing harpsichord."
+      },
+      {
+        "title": "Concert Series",
+        "text": "Building on its rich musical tradition, UUWH launched a Concert Series in Fall 2023.\n\n\nBuilding on its rich musical tradition, UU Wellesley Hills launched a Concert Series in Fall 2023.  The programs bring diverse musicians into our space, outside of the structure of Sunday morning services.  We welcome UU Wellesley Hills members, friends, and the wider community to enjoy music of many genres, featuring both local and traveling performers.  Plans are taking shape for our next “season,” with several events in the works.  Recent offerings have included a “roots-infused” coffee house concert, a Celtic music duo, an evening of a capella singing, and a bluegrass band."
+      }
     ]
   },
   "artist": {
