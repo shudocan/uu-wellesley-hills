@@ -1,0 +1,8 @@
+{
+  "rule": 3,
+  "guidance": "Keep THREE website stewards at all times. A steward holds GitHub owner access for the church organization, can issue and revoke editor access codes, helps manage the domain, and handles bigger changes (using Claude Code). When a steward steps down, recruit a replacement promptly so there are always three. See the Owner & Steward Handbook for full details.",
+  "stewards": [
+    { "name": "Andrew Weaver", "role": "Steward", "github": "shudocan" },
+    { "name": "Timothy Fulham", "role": "Steward", "github": "" }
+  ]
+}

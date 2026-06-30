@@ -25,6 +25,7 @@
     { group: "lists", key: "announcements", label: "Announcements", icon: "📣", color: "#e8893b", file: "data/announcements.json", preview: "index.html" },
     { group: "lists", key: "__blog",        label: "Blog posts",    icon: "✍️", color: "#2c9e8f", blog: true,                     preview: "blog.html" },
     { group: "other", key: "site",          label: "Site info (address, hours, links)", icon: "⚙️", color: "#5566cf", file: "data/site.json", preview: "index.html" },
+    { group: "other", key: "stewards",       label: "Stewards", icon: "🛡️", color: "#2c9e8f", file: "data/stewards.json", noPreview: true },
     { group: "ai",    key: "__ai",     label: "Build a page", icon: "✨", color: "#8a5cd0", ai: true },
     { group: "ai",    key: "__aihelp", label: "Bigger changes", icon: "🚀", color: "#3a8fd0", help: true, url: "ai-help.html" }
   ];
@@ -36,7 +37,8 @@
     linkText: "Link label", linkHref: "Link address (URL)", href: "Link address (URL)",
     buttonText: "Button label", buttonHref: "Button address (URL)", show: "Show this?",
     watchText: "Button label", watchHref: "Button address (URL)", capacity: "Capacity",
-    eyebrow: "Small label above heading", tagline: "Tagline", name: "Name", role: "Role", email: "Email"
+    eyebrow: "Small label above heading", tagline: "Tagline", name: "Name", role: "Role", email: "Email",
+    github: "GitHub username", rule: "Required number of stewards", guidance: "Guidance"
   };
   var TEXTAREA_KEYS = ["body","text","details","summary","intro","a","lead","note","footerNote","directions","policiesText","description"];
 
@@ -278,6 +280,7 @@
     $("history-panel").classList.toggle("hide", false);
     if (entry.ai) { setAiMode(true); return openAIBuilder(); }
     setAiMode(false);
+    $("btn-preview").classList.toggle("hide", !!entry.noPreview);
     if (entry.blog) return openBlog();
     $("editor-sub").textContent = "Loading…";
     getFile(entry.file).then(function (f) {
@@ -630,7 +633,18 @@
   function enterEditor() {
     showView("editor"); status("");
     var g = $("greeting"); if (g) { g.textContent = "Pick a page, make your change, then Publish ✨"; g.classList.remove("hide"); }
-    buildNav(); openEntry(REGISTRY[0]); loadHistory();
+    buildNav(); openEntry(REGISTRY[0]); loadHistory(); checkStewards();
+  }
+
+  // Governance reminder: always keep the required number of stewards.
+  function checkStewards() {
+    getFile("data/stewards.json").then(function (f) {
+      var d = JSON.parse(f.text), n = (d.stewards || []).length, need = d.rule || 3, g = $("greeting");
+      if (n < need && g) {
+        g.innerHTML = "⚠️ Only " + n + " of " + need + " stewards — open <b>Stewards</b> to add one.";
+        g.style.color = "#9c5a00";
+      }
+    }).catch(function () {});
   }
 
   /* ---- login -------------------------------------------------------------- */
@@ -641,7 +655,7 @@
     $("login-msg").textContent = "Checking…";
     cfg = { owner: owner, repo: repo, branch: branch, token: token };
     gh(repoPath("")).then(function (r) {
-      if (r.permissions && !r.permissions.push) { $("login-msg").textContent = "That access code can read but not edit this site. Please check with Andrew."; return; }
+      if (r.permissions && !r.permissions.push) { $("login-msg").textContent = "That access code can read but not edit this site. Please ask a steward for a new one."; return; }
       saveCfg(cfg); $("login-msg").textContent = ""; enterEditor();
     }).catch(function (e) {
       cfg = null;
