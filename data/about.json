@@ -1,0 +1,31 @@
+{
+  "header": {
+    "eyebrow": "About & Visitors",
+    "title": "About Us",
+    "lead": "A Unitarian Universalist congregation in Wellesley Hills since 1871."
+  },
+  "story": {
+    "heading": "Who We Are",
+    "body": "We are a community of seekers, founded in 1871, who covenant to support one another in the search for truth and meaning. As Unitarian Universalists, we draw wisdom from many sources and welcome people of every belief, background, age, ability, race, and sexual orientation. Our only creed is love."
+  },
+  "mission": {
+    "heading": "Our Mission",
+    "body": "Building a community of faith that inspires spiritual growth and just and responsible action in our lives and in the world."
+  },
+  "uu": {
+    "heading": "What is Unitarian Universalism?",
+    "body": "Unitarian Universalism is a liberal religious tradition that encourages each person to follow their own spiritual path. We are bound not by a shared doctrine but by shared values — love, justice, equity, transformation, pluralism, interdependence, and generosity."
+  },
+  "land": {
+    "heading": "Land Acknowledgment",
+    "body": "We acknowledge that our meetinghouse stands on the traditional land of the Massachusett people. Our Indigenous Peoples' Task Force works to honor this history and support Indigenous communities today."
+  },
+  "leadership": {
+    "heading": "Our Leadership",
+    "people": [
+      { "name": "Rev. Mark Robel", "role": "Minister", "email": "minister@uuwellesley.org" },
+      { "name": "Director of Music", "role": "Music Ministry", "email": "music@uuwellesley.org" },
+      { "name": "Church Office", "role": "Administration", "email": "info@uuwellesley.org" }
+    ]
+  }
+}

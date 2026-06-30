@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Music — UU Wellesley Hills</title>
+  <meta name="description" content="The music program at UU Wellesley Hills: choir, Choir 101, the Community Messiah Sing, and our concert series.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="music">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">Worship &amp; Music</p>
+        <h1 data-bind="header.title">Music</h1>
+        <p class="lead" data-bind="header.lead">Music is integral to our life together.</p>
+        <p data-bind="intro">We welcome singers and instrumentalists of all kinds.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 data-reveal data-bind="ensembles.heading">Ensembles &amp; Programs</h2>
+        <div class="grid grid--2" data-list="ensembles.items" data-stagger style="margin-top:1.5rem">
+          <template>
+            <div class="card" data-reveal>
+              <h3 data-bind="title">Ensemble</h3>
+              <p class="muted" data-bind="text">Description</p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="container grid grid--2">
+        <div data-reveal="left">
+          <p class="eyebrow" data-bind="artist.heading">Artist in Residence</p>
+          <h2 data-bind="artist.name">Leanne Rabesa</h2>
+          <p data-bind="artist.text">Bio.</p>
+        </div>
+        <div class="card" data-reveal="right">
+          <h3 data-bind="contact.heading">Get Involved</h3>
+          <p data-bind="contact.text">Interested in singing or playing with us?</p>
+          <p class="muted" data-bind="contact.role">Director of Music</p>
+          <a class="btn btn--primary" data-bind="contact.email" data-bind-href="contact.emailLink" href="#">music@uuwellesley.org</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

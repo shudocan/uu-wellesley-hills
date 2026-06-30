@@ -1,0 +1,29 @@
+{
+  "header": {
+    "eyebrow": "Worship & Music",
+    "title": "Music",
+    "lead": "Music is an integral part of our spiritual and cultural life — and our sanctuary's acoustics are a joy to sing in."
+  },
+  "intro": "We welcome singers and instrumentalists of all kinds, members and non-members alike, to share in our music ministry.",
+  "ensembles": {
+    "heading": "Ensembles & Programs",
+    "items": [
+      { "title": "Choir", "text": "Rehearses Wednesdays 7:00–8:45pm and Sundays at 9:00am (three Sundays a month). New voices always welcome." },
+      { "title": "Choir 101", "text": "An introductory program offered each October, or by request — a gentle on-ramp to choral singing." },
+      { "title": "Community Messiah Sing", "text": "Our beloved annual December gathering to sing Handel's Messiah together." },
+      { "title": "Concert Series", "text": "Launched in Fall 2023, bringing guest artists and ensembles to our sanctuary." }
+    ]
+  },
+  "artist": {
+    "heading": "Artist in Residence",
+    "name": "Leanne Rabesa",
+    "text": "A Boston-based freelance violist, arranger, and composer who enriches our worship and concerts throughout the year."
+  },
+  "contact": {
+    "heading": "Get Involved",
+    "text": "Interested in singing or playing with us? We'd love to hear from you.",
+    "email": "music@uuwellesley.org",
+    "emailLink": "mailto:music@uuwellesley.org",
+    "role": "Director of Music"
+  }
+}

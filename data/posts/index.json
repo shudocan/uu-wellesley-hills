@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "slug": "summer-services-update",
+      "title": "Summer Services Update",
+      "date": "2025-06-18",
+      "author": "UU Wellesley Hills",
+      "summary": "Our summer worship schedule and locations are now set. Services are lay-led and gather in the chapel.",
+      "image": "assets/img/post-summer.jpg"
+    },
+    {
+      "slug": "summer-plate-collections",
+      "title": "Summer Plate Collections",
+      "date": "2025-06-18",
+      "author": "Social Justice Team",
+      "summary": "Learn which community partners receive our summer plate offerings this year.",
+      "image": "assets/img/post-plate.jpg"
+    },
+    {
+      "slug": "join-the-resistance",
+      "title": "Join the Resistance",
+      "date": "2025-06-17",
+      "author": "Social Justice Team",
+      "summary": "Ways to take just and responsible action with our social-justice teams this season.",
+      "image": "assets/img/post-resistance.jpg"
+    }
+  ]
+}

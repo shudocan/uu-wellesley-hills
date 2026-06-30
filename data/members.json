@@ -1,0 +1,14 @@
+{
+  "header": {
+    "eyebrow": "Members",
+    "title": "Member Pages",
+    "lead": "Members manage their giving, pledge, and directory through Breeze, our secure church management system."
+  },
+  "intro": "Click Member Log In to access your account. New to Breeze or need help? Contact the office at info@uuwellesley.org.",
+  "cards": [
+    { "title": "Member Log In", "text": "Access your member account, profile, and the directory.", "buttonText": "Log In to Breeze", "href": "https://uuwellesleyhills.breezechms.com/login" },
+    { "title": "Member Directory", "text": "Find contact information for fellow members (sign-in required).", "buttonText": "Open Directory", "href": "https://uuwellesleyhills.breezechms.com/people" },
+    { "title": "Give", "text": "Make a one-time or recurring gift by credit card or ACH.", "buttonText": "Give Now", "href": "https://uuwellesleyhills.breezechms.com/give/online" },
+    { "title": "Pledge", "text": "Make or pay your annual pledge commitment.", "buttonText": "Manage Pledge", "href": "https://uuwellesleyhills.breezechms.com/give/online" }
+  ]
+}

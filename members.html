@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Members — UU Wellesley Hills</title>
+  <meta name="description" content="Member resources at UU Wellesley Hills: log in, directory, giving, and pledges via Breeze.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="members">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">Members</p>
+        <h1 data-bind="header.title">Member Pages</h1>
+        <p class="lead" data-bind="header.lead">Manage your account through Breeze.</p>
+        <p data-bind="intro">Log in to access your account.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--2" data-list="cards" data-stagger>
+          <template>
+            <div class="card" data-reveal>
+              <h3 data-bind="title">Resource</h3>
+              <p class="muted" data-bind="text">Description</p>
+              <a class="btn btn--primary" data-bind="buttonText" data-bind-href="href" href="#" target="_blank" rel="noopener">Open</a>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

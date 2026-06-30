@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Calendar &amp; Events — UU Wellesley Hills</title>
+  <meta name="description" content="Upcoming events and the full calendar at UU Wellesley Hills, plus our newsletter.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="events">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">News &amp; Events</p>
+        <h1 data-bind="header.title">Calendar &amp; Events</h1>
+        <p class="lead" data-bind="header.lead">What's happening.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 data-reveal>Upcoming Events</h2>
+        <div class="grid grid--3" data-list="upcoming" data-stagger style="margin-top:1.5rem">
+          <template>
+            <article class="card" data-reveal>
+              <div class="card__media"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
+              <p class="card__meta" data-bind="date">Date</p>
+              <h3 data-bind="title">Event</h3>
+              <p class="muted" data-bind="location">Location</p>
+              <p data-bind="description">Details</p>
+              <a class="btn btn--ghost" data-bind-href="href" href="#">Learn more</a>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="container">
+        <h2 data-reveal>Full Calendar</h2>
+        <div class="embed" style="aspect-ratio:4/3;margin-top:1rem" data-reveal>
+          <iframe data-bind-src="calendarEmbed" src="" title="UU Wellesley Hills calendar" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="newsletter">
+      <div class="container prose center" data-reveal>
+        <p class="eyebrow">Stay Connected</p>
+        <h2 data-bind="newsletter.heading">Our Newsletter</h2>
+        <p class="lead" data-bind="newsletter.text">Stay connected.</p>
+        <a class="btn btn--primary" data-bind="newsletter.linkText" data-bind-href="newsletter.linkHref" href="#">Read the Latest</a>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

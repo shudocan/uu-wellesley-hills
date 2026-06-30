@@ -1,0 +1,34 @@
+{
+  "header": {
+    "eyebrow": "About & Visitors",
+    "title": "Visitor FAQs",
+    "lead": "Thinking about visiting? Here's what to expect. However you come, you'll be welcome."
+  },
+  "groups": [
+    {
+      "category": "General",
+      "questions": [
+        { "q": "Who are you?", "a": "We are the Unitarian Universalist Society in Wellesley Hills, a liberal religious congregation established in 1871. Our only creed is love." },
+        { "q": "What is Unitarian Universalism?", "a": "A welcoming faith tradition that draws wisdom from many sources and encourages each person to follow their own spiritual path, guided by shared values rather than a required doctrine." },
+        { "q": "What is a service like?", "a": "Sunday services last about an hour and include music, readings, a sermon, time for reflection, and song. Come as you are — there's no dress code." },
+        { "q": "What happens after the service?", "a": "We gather for fellowship and refreshments, in person and on Zoom. It's a great time to meet people and ask questions." }
+      ]
+    },
+    {
+      "category": "Logistics",
+      "questions": [
+        { "q": "When and where do you meet?", "a": "Sundays at 10:30am (September–mid-June) at 309 Washington Street, Wellesley Hills. Summer services are lay-led and meet in the chapel." },
+        { "q": "Can I attend online?", "a": "Yes. Services and fellowship hour are available remotely — look for the livestream and Zoom links on our homepage." },
+        { "q": "Is the building accessible?", "a": "Yes, our campus is wheelchair accessible. Contact the office with any specific needs and we'll be glad to help." },
+        { "q": "Where do I park?", "a": "Parking is available on-site and on nearby streets. Arrive a few minutes early and a greeter will help you find your way." }
+      ]
+    },
+    {
+      "category": "Family & Children",
+      "questions": [
+        { "q": "Are children welcome?", "a": "Absolutely. We offer religious education and welcome children in worship. Wiggles and noise are part of community life." },
+        { "q": "What about support during hard times?", "a": "Our Caring & Companioning Team offers support to members and friends facing illness, loss, or other challenges." }
+      ]
+    }
+  ]
+}

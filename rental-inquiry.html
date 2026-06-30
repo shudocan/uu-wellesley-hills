@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Rental Inquiry — UU Wellesley Hills</title>
+  <meta name="description" content="Submit a rental inquiry for the Sanctuary, Chapel, or Multipurpose Room at UU Wellesley Hills.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/forms.js"></script>
+</head>
+<body data-page="">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow">Rentals</p>
+        <h1>Rental Inquiry</h1>
+        <p class="lead">Tell us about your event and we'll be in touch about availability and rates. Fields marked * are required.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container" style="max-width:720px">
+        <form class="form" id="rental-form" data-form="rental" novalidate>
+          <div class="form-row">
+            <label class="field">
+              <span>Name *</span>
+              <input type="text" name="name" required autocomplete="name">
+            </label>
+            <label class="field">
+              <span>Organization</span>
+              <input type="text" name="organization" autocomplete="organization">
+            </label>
+          </div>
+          <div class="form-row">
+            <label class="field">
+              <span>Email *</span>
+              <input type="email" name="email" required autocomplete="email">
+            </label>
+            <label class="field">
+              <span>Phone</span>
+              <input type="tel" name="phone" autocomplete="tel">
+            </label>
+          </div>
+          <div class="form-row">
+            <label class="field">
+              <span>Space requested</span>
+              <select name="space">
+                <option value="">No preference</option>
+                <option>Sanctuary (250–300)</option>
+                <option>Chapel (70)</option>
+                <option>Multipurpose Room (30)</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Event date</span>
+              <input type="date" name="event_date">
+            </label>
+          </div>
+          <label class="field">
+            <span>Type of event</span>
+            <input type="text" name="event_type" placeholder="Wedding, concert, class, meeting…">
+          </label>
+          <label class="field">
+            <span>Tell us more *</span>
+            <textarea name="details" rows="5" required placeholder="Expected attendance, times, setup needs, questions…"></textarea>
+          </label>
+          <!-- honeypot anti-spam -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+          <div class="form-actions">
+            <button type="submit" class="btn btn--primary">Send Inquiry</button>
+            <span class="form-status" id="rental-status" role="status" aria-live="polite"></span>
+          </div>
+          <p class="muted" style="font-size:.9rem">Prefer email? Write to <a href="mailto:info@uuwellesley.org?subject=Rental%20Inquiry">info@uuwellesley.org</a> or call 781-235-7423.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

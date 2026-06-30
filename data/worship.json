@@ -1,0 +1,33 @@
+{
+  "header": {
+    "eyebrow": "Worship & Music",
+    "title": "Worship",
+    "lead": "Sunday services that gather us around weekly themes — to reflect, sing, and grow together."
+  },
+  "services": {
+    "heading": "Sunday Services",
+    "body": "From September through mid-June we worship together on Sundays at 10:30am, with services built around a weekly theme. In summer, we gather for lay-led chapel services in a more intimate setting. Whether in person or online, all are welcome.",
+    "time": "Sundays · 10:30am (Sept–mid-June)",
+    "watchText": "Watch Past Services on YouTube",
+    "watchHref": "https://www.youtube.com/@uuwellesleyhills"
+  },
+  "youtubeEmbed": "https://www.youtube.com/embed?listType=user_uploads&list=uuwellesleyhills",
+  "traditions": {
+    "heading": "Holidays & Traditions",
+    "items": [
+      { "title": "Water Celebration", "text": "We begin the church year by mingling waters gathered over the summer." },
+      { "title": "Flower Communion", "text": "Each person brings a flower and takes home another — a symbol of our shared community." },
+      { "title": "Blessing of the Animals", "text": "We welcome our beloved companion animals for a blessing." },
+      { "title": "Christmas Eve Lessons & Carols", "text": "A candlelit service of readings and music." }
+    ]
+  },
+  "lifecycle": {
+    "heading": "Lifecycle Celebrations",
+    "items": [
+      { "title": "Weddings", "text": "Ceremonies for all couples, including same-sex and interfaith marriages." },
+      { "title": "Child Dedications", "text": "Welcoming children with a ritual of water and rose." },
+      { "title": "Youth Passages", "text": "Bridging ceremonies and Coming of Age programs that honor growth." },
+      { "title": "Memorial Services", "text": "Celebrations of life that honor those we have loved and lost." }
+    ]
+  }
+}

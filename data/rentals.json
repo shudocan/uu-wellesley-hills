@@ -1,0 +1,24 @@
+{
+  "header": {
+    "eyebrow": "Rentals",
+    "title": "Rent Our Space",
+    "lead": "Our historic campus is available to rent for weddings, concerts, classes, meetings, and community events."
+  },
+  "intro": "Over the years our spaces have hosted weddings and memorial services, musical recitals and concerts, dance classes, summer camps, educational programs, and board meetings. We'd be glad to host your event too.",
+  "spaces": {
+    "heading": "Available Spaces",
+    "items": [
+      { "title": "Sanctuary", "capacity": "Seats 250–300", "text": "A beautiful, acoustically rich space ideal for weddings, concerts, and large gatherings.", "image": "assets/img/space-sanctuary.jpg" },
+      { "title": "Chapel", "capacity": "Seats 70", "text": "An intimate setting perfect for small ceremonies, recitals, and meetings.", "image": "assets/img/space-chapel.jpg" },
+      { "title": "Multipurpose Room", "capacity": "Seats 30", "text": "A flexible room for classes, workshops, rehearsals, and small groups.", "image": "assets/img/space-multipurpose.jpg" }
+    ]
+  },
+  "policiesText": "Please review our Facilities Usage Policies before submitting an inquiry.",
+  "policiesHref": "assets/pdf/facilities-usage-policies.pdf",
+  "cta": {
+    "heading": "Ready to inquire?",
+    "text": "Tell us about your event and we'll be in touch about availability and rates.",
+    "buttonText": "Start a Rental Inquiry",
+    "buttonHref": "rental-inquiry.html"
+  }
+}

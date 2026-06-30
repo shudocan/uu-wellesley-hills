@@ -1,0 +1,25 @@
+{
+  "header": {
+    "eyebrow": "About & Visitors",
+    "title": "Engage & Connect",
+    "lead": "There are many ways to belong here — in worship, in service, and in friendship."
+  },
+  "intro": "Whether you're new or have been part of our community for years, we invite you to get involved in the ways that feed your spirit.",
+  "ways": {
+    "heading": "Ways to Get Involved",
+    "items": [
+      { "title": "Social Justice", "text": "Join our teams working for racial justice, climate action, and a more compassionate world — including our monthly Black Lives Matter vigil." },
+      { "title": "Caring & Companioning", "text": "Our Caring Team offers support, meals, and companionship to members during times of need." },
+      { "title": "Small Groups & Fellowship", "text": "Connect through covenant groups, Women's TGIF, and other gatherings throughout the year." },
+      { "title": "Religious Education", "text": "Programs for children, youth, and adults to explore faith and grow together." },
+      { "title": "Music & Choir", "text": "Lend your voice or instrument to our music ministry — no audition required." },
+      { "title": "Volunteer", "text": "Ushering, hospitality, building care, and more — every gift matters." }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to connect?",
+    "text": "Reach out and we'll help you find your place.",
+    "buttonText": "Contact Us",
+    "buttonHref": "contact.html"
+  }
+}

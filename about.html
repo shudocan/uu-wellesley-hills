@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>About Us — UU Wellesley Hills</title>
+  <meta name="description" content="About the Unitarian Universalist Society in Wellesley Hills: our story since 1871, our mission, and our shared values.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="about">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">About &amp; Visitors</p>
+        <h1 data-bind="header.title">About Us</h1>
+        <p class="lead" data-bind="header.lead">A UU congregation since 1871.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid--2">
+        <div data-reveal="left">
+          <h2 data-bind="story.heading">Who We Are</h2>
+          <p data-bind="story.body">Our story.</p>
+        </div>
+        <div class="card" data-reveal="right">
+          <h2 data-bind="mission.heading">Our Mission</h2>
+          <p class="lead" data-bind="mission.body">Mission statement.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="container grid grid--2">
+        <div data-reveal="left">
+          <h2 data-bind="uu.heading">What is Unitarian Universalism?</h2>
+          <p data-bind="uu.body">UU description.</p>
+        </div>
+        <div data-reveal="right">
+          <h2 data-bind="land.heading">Land Acknowledgment</h2>
+          <p data-bind="land.body">Land acknowledgment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 data-reveal data-bind="leadership.heading">Our Leadership</h2>
+        <div class="grid grid--3" data-list="leadership.people" data-stagger style="margin-top:1.5rem">
+          <template>
+            <div class="card" data-reveal>
+              <h3 data-bind="name">Name</h3>
+              <p class="muted" data-bind="role">Role</p>
+              <p class="muted" data-bind="email">email</p>
+            </div>
+          </template>
+        </div>
+        <p style="margin-top:1.5rem"><a class="btn btn--primary" href="visitor-faqs.html">Planning a Visit? Read our FAQs →</a></p>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

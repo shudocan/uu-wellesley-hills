@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Visitor FAQs — UU Wellesley Hills</title>
+  <meta name="description" content="Frequently asked questions for visitors to UU Wellesley Hills: what services are like, where we meet, accessibility, attending online, and families.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="visitor-faqs">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">About &amp; Visitors</p>
+        <h1 data-bind="header.title">Visitor FAQs</h1>
+        <p class="lead" data-bind="header.lead">Here's what to expect.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container prose faq" data-list="groups">
+        <template>
+          <div data-reveal>
+            <h2 data-bind="category">Category</h2>
+            <div data-list="questions">
+              <template>
+                <details>
+                  <summary data-bind="q">Question</summary>
+                  <div data-bind="a">Answer</div>
+                </details>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+      <div class="container prose" style="margin-top:1.5rem">
+        <p><a class="btn btn--primary" href="contact.html">Still have questions? Contact us →</a></p>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

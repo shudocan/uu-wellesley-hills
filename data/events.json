@@ -1,4 +1,16 @@
 {
+  "header": {
+    "eyebrow": "News & Events",
+    "title": "Calendar & Events",
+    "lead": "What's happening at UU Wellesley Hills — worship, gatherings, vigils, and community life."
+  },
+  "calendarEmbed": "https://calendar.google.com/calendar/embed?src=info%40uuwellesley.org&ctz=America%2FNew_York",
+  "newsletter": {
+    "heading": "Our Newsletter",
+    "text": "Stay connected with our latest news, reflections, and upcoming events delivered to your inbox.",
+    "linkText": "Read the Latest Newsletter",
+    "linkHref": "blog.html"
+  },
   "upcoming": [
     {
       "title": "Black Lives Matter Vigil",

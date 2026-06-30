@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Worship — UU Wellesley Hills</title>
+  <meta name="description" content="Sunday worship at UU Wellesley Hills: weekly themes, music, holidays and traditions, and lifecycle celebrations.">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="worship">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+
+    <section class="section section--tint">
+      <div class="container prose" data-reveal>
+        <p class="eyebrow" data-bind="header.eyebrow">Worship &amp; Music</p>
+        <h1 data-bind="header.title">Worship</h1>
+        <p class="lead" data-bind="header.lead">Sunday services that gather us together.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid--2">
+        <div data-reveal="left">
+          <h2 data-bind="services.heading">Sunday Services</h2>
+          <p data-bind="services.body">Service description.</p>
+          <p><span class="badge" data-bind="services.time">Sundays · 10:30am</span></p>
+          <p><a class="btn btn--primary" data-bind="services.watchText" data-bind-href="services.watchHref" href="#">Watch on YouTube</a></p>
+        </div>
+        <div class="embed embed--video" data-reveal="right">
+          <iframe data-bind-src="youtubeEmbed" src="" title="UU Wellesley Hills services on YouTube" loading="lazy" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="container">
+        <h2 data-reveal data-bind="traditions.heading">Holidays &amp; Traditions</h2>
+        <div class="grid grid--2" data-list="traditions.items" data-stagger style="margin-top:1.5rem">
+          <template>
+            <div class="card" data-reveal>
+              <h3 data-bind="title">Tradition</h3>
+              <p class="muted" data-bind="text">Description</p>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 data-reveal data-bind="lifecycle.heading">Lifecycle Celebrations</h2>
+        <div class="grid grid--2" data-list="lifecycle.items" data-stagger style="margin-top:1.5rem">
+          <template>
+            <div class="card" data-reveal>
+              <h3 data-bind="title">Celebration</h3>
+              <p class="muted" data-bind="text">Description</p>
+            </div>
+          </template>
+        </div>
+        <p style="margin-top:1.5rem"><a class="btn btn--ghost" href="contact.html">Inquire about a ceremony</a> <a class="btn btn--ghost" href="music.html">Explore our Music →</a></p>
+      </div>
+    </section>
+
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

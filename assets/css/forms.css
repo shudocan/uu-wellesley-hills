@@ -1,0 +1,24 @@
+/* forms.css — form styling for the rental inquiry (and future forms). */
+.form { display: grid; gap: 1.1rem; }
+.form-row { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.field { display: grid; gap: 0.35rem; }
+.field > span { font-weight: 600; font-size: 0.92rem; }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--text); background: var(--surface);
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.65rem 0.8rem; width: 100%;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+.field textarea { resize: vertical; }
+.field[data-invalid="true"] input,
+.field[data-invalid="true"] select,
+.field[data-invalid="true"] textarea { border-color: hsl(0 65% 52%); }
+.field .err { color: hsl(0 65% 48%); font-size: 0.82rem; }
+.form-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.form-status { font-size: 0.95rem; }
+.form-status[data-state="ok"] { color: hsl(140 50% 38%); font-weight: 600; }
+.form-status[data-state="error"] { color: hsl(0 65% 48%); font-weight: 600; }
+.form-status[data-state="sending"] { color: var(--muted); }
