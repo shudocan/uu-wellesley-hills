@@ -422,36 +422,44 @@
     }).catch(function (e) { host.innerHTML = "<p class='topbar__status'>Could not load history: " + e.message + "</p>"; });
   }
 
+  // Atomic undo: create one new commit whose tree is the previous commit's
+  // snapshot, then fast-forward the branch to it. Handles any files (incl.
+  // images) at once, and can't half-apply. Re-entrancy guarded.
   function undoLast() {
+    if (undoLast._busy) return;
     if (!confirm("Undo the most recent change? This puts the website back the way it was just before it.")) return;
+    undoLast._busy = true;
+    var btn = $("btn-undo"); if (btn) btn.disabled = true;
     status("Undoing…");
-    listCommits(1).then(function (cs) {
-      var head = cs[0]; if (!head) throw new Error("nothing to undo");
-      return getCommit(head.sha);
-    }).then(function (commit) {
-      var parent = commit.parents && commit.parents[0] && commit.parents[0].sha;
-      var files = commit.files || [];
-      // Restore each changed file to its state in the parent commit.
-      var chain = Promise.resolve();
-      files.forEach(function (f) {
-        chain = chain.then(function () {
-          if (!parent) return null;
-          return getFileAt(f.filename, parent).then(function (prev) {
-            return getFileAt(f.filename, cfg.branch).then(function (cur) {
-              if (prev === null && cur) return deleteFile(f.filename, cur.sha, "Undo: remove " + f.filename + " [admin]");
-              if (prev && cur) return putFile(f.filename, prev.text, "Undo change to " + f.filename + " [admin]", cur.sha);
-              if (prev && !cur) return putFile(f.filename, prev.text, "Undo: restore " + f.filename + " [admin]");
-              return null;
-            });
+    var ref = "/git/refs/heads/" + encodeURIComponent(cfg.branch);
+    gh(repoPath(ref))
+      .then(function (r) {
+        var headSha = r.object.sha;
+        return gh(repoPath("/commits/" + headSha)).then(function (head) {
+          if (!head.parents || !head.parents.length) throw new Error("there's nothing earlier to undo");
+          var parentSha = head.parents[0].sha;
+          return gh(repoPath("/git/commits/" + parentSha)).then(function (pc) {
+            return gh(repoPath("/git/commits"), { method: "POST", body: {
+              message: "Undo last change [admin]", tree: pc.tree.sha, parents: [headSha]
+            }});
+          }).then(function (nc) {
+            return gh(repoPath(ref), { method: "PATCH", body: { sha: nc.sha, force: false } });
           });
         });
+      })
+      .then(function () {
+        status(""); toast("✅ Change undone — the site will update in about a minute.", "ok");
+        undoLast._busy = false; if (btn) btn.disabled = false;
+        loadHistory();
+        if (state.entry && state.entry.ai) { /* leave builder as-is */ }
+        else if (state.entry && state.entry.blog) openBlog();
+        else if (state.entry) openEntry(state.entry);
+      })
+      .catch(function (e) {
+        undoLast._busy = false; if (btn) btn.disabled = false; status("");
+        if (e.status === 422) toast("The site just changed — give it a moment, then try Undo once more.", "error");
+        else toast("Undo didn't go through (" + (e.message || "error") + "). Wait a few seconds and try once more.", "error");
       });
-      return chain;
-    }).then(function () {
-      status(""); toast("✅ Change undone — the site will update in about a minute.", "ok");
-      loadHistory();
-      if (state.entry && !state.entry.blog) openEntry(state.entry); else if (state.entry) openBlog();
-    }).catch(function (e) { status(""); toast("Undo failed: " + e.message, "error"); });
   }
 
   /* ---- AI page builder (proof of concept, via Puter.js — no key/backend) -- */
