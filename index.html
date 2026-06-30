@@ -80,6 +80,10 @@
           <h2 data-bind="values.heading">Our Shared Values</h2>
           <p data-bind="values.body">Values description.</p>
           <p><span class="badge" data-bind="values.welcoming">LGBTQ+ Welcoming Congregation</span></p>
+          <figure class="welcoming">
+            <img data-bind-src="values.welcomingImage" src="assets/img/welcoming-flag.jpg" alt="Progress Pride flag" onerror="this.style.display='none'">
+            <figcaption class="muted" data-bind="values.welcomingText">Whatever path has brought you here, we welcome you.</figcaption>
+          </figure>
         </div>
         <div data-reveal="right" class="center">
           <img data-bind-src="values.image" src="assets/img/shared-values.png" alt="UU Shared Values: love at the center, surrounded by interdependence, pluralism, justice, transformation, generosity, and equity" style="max-width:420px;margin-inline:auto" onerror="this.style.display='none'">

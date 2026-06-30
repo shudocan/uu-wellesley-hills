@@ -232,6 +232,12 @@ img { max-width: 100%; height: auto; display: block; }
 .divider { height: 1px; background: var(--border); border: 0; margin-block: 2rem; }
 .muted { color: var(--muted); }
 
+/* Welcoming flag + statement */
+.welcoming { display: flex; gap: 1rem; align-items: center; margin: 1.4rem 0 0; }
+.welcoming img { width: 150px; height: auto; border-radius: 8px; border: 1px solid var(--border); flex: none; }
+.welcoming figcaption { font-style: italic; }
+.welcoming { margin-inline: 0; }
+
 /* FAQ accordion */
 .faq details { border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--surface); margin-bottom: 0.6rem; }
 .faq summary { cursor: pointer; padding: 1rem 1.2rem; font-weight: 600; list-style: none; }

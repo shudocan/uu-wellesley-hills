@@ -42,6 +42,8 @@
     "heading": "Our Shared Values",
     "body": "Love is at the center of our faith, surrounded by interdependence, pluralism, justice, transformation, generosity, and equity — the UU Shared Values adopted in June 2024.",
     "image": "assets/img/shared-values.png",
-    "welcoming": "LGBTQ+ Welcoming Congregation"
+    "welcoming": "LGBTQ+ Welcoming Congregation",
+    "welcomingText": "Whatever path has brought you here, we welcome you.",
+    "welcomingImage": "assets/img/welcoming-flag.jpg"
   }
 }
