@@ -12,19 +12,19 @@
 
   /* ---- What the secretary may edit (layout/code stay out of this list) ---- */
   var REGISTRY = [
-    { group: "pages", key: "home",         label: "Home page",     file: "data/home.json",         preview: "index.html" },
-    { group: "pages", key: "worship",      label: "Worship",       file: "data/worship.json",      preview: "worship.html" },
-    { group: "pages", key: "music",        label: "Music",         file: "data/music.json",        preview: "music.html" },
-    { group: "pages", key: "about",        label: "About Us",      file: "data/about.json",        preview: "about.html" },
-    { group: "pages", key: "engage",       label: "Engage & Connect", file: "data/engage.json",    preview: "engage.html" },
-    { group: "pages", key: "visitor-faqs", label: "Visitor FAQs",  file: "data/visitor-faqs.json", preview: "visitor-faqs.html" },
-    { group: "pages", key: "contact",      label: "Contact",       file: "data/contact.json",      preview: "contact.html" },
-    { group: "pages", key: "rentals",      label: "Rentals",       file: "data/rentals.json",      preview: "rentals.html" },
-    { group: "pages", key: "members",      label: "Members",       file: "data/members.json",      preview: "members.html" },
-    { group: "lists", key: "events",        label: "Events",        file: "data/events.json",       preview: "events.html" },
-    { group: "lists", key: "announcements", label: "Announcements", file: "data/announcements.json", preview: "index.html" },
-    { group: "lists", key: "__blog",        label: "Blog posts",    blog: true,                     preview: "blog.html" },
-    { group: "other", key: "site",          label: "Site info (address, hours, links)", file: "data/site.json", preview: "index.html" }
+    { group: "pages", key: "home",         label: "Home page",     icon: "🏠", color: "#e0533d", file: "data/home.json",         preview: "index.html" },
+    { group: "pages", key: "worship",      label: "Worship",       icon: "⛪", color: "#e8893b", file: "data/worship.json",      preview: "worship.html" },
+    { group: "pages", key: "music",        label: "Music",         icon: "🎵", color: "#d9a328", file: "data/music.json",        preview: "music.html" },
+    { group: "pages", key: "about",        label: "About Us",      icon: "👋", color: "#5aa544", file: "data/about.json",        preview: "about.html" },
+    { group: "pages", key: "engage",       label: "Engage & Connect", icon: "🤝", color: "#2c9e8f", file: "data/engage.json",  preview: "engage.html" },
+    { group: "pages", key: "visitor-faqs", label: "Visitor FAQs",  icon: "❓", color: "#3a8fd0", file: "data/visitor-faqs.json", preview: "visitor-faqs.html" },
+    { group: "pages", key: "contact",      label: "Contact",       icon: "✉️", color: "#5566cf", file: "data/contact.json",      preview: "contact.html" },
+    { group: "pages", key: "rentals",      label: "Rentals",       icon: "🔑", color: "#8a5cd0", file: "data/rentals.json",      preview: "rentals.html" },
+    { group: "pages", key: "members",      label: "Members",       icon: "👥", color: "#c44d97", file: "data/members.json",      preview: "members.html" },
+    { group: "lists", key: "events",        label: "Events",        icon: "📅", color: "#e0533d", file: "data/events.json",       preview: "events.html" },
+    { group: "lists", key: "announcements", label: "Announcements", icon: "📣", color: "#e8893b", file: "data/announcements.json", preview: "index.html" },
+    { group: "lists", key: "__blog",        label: "Blog posts",    icon: "✍️", color: "#2c9e8f", blog: true,                     preview: "blog.html" },
+    { group: "other", key: "site",          label: "Site info (address, hours, links)", icon: "⚙️", color: "#5566cf", file: "data/site.json", preview: "index.html" }
   ];
 
   var FRIENDLY = {
@@ -260,7 +260,10 @@
   function openEntry(entry) {
     state.entry = entry;
     setActiveNav(entry.key);
-    $("editor-title").textContent = "Edit: " + entry.label;
+    var t = $("editor-title"); t.innerHTML = "";
+    t.appendChild(el("span", { class: "title-ico", text: entry.icon || "" }));
+    t.appendChild(document.createTextNode(" " + entry.label));
+    document.documentElement.style.setProperty("--accent-now", entry.color || "#2c9e8f");
     $("history-panel").classList.toggle("hide", false);
     if (entry.blog) return openBlog();
     $("editor-sub").textContent = "Loading…";
@@ -437,8 +440,11 @@
     var groups = { pages: $("nav-pages"), lists: $("nav-lists"), other: $("nav-other") };
     Object.keys(groups).forEach(function (g) { groups[g].innerHTML = ""; });
     REGISTRY.forEach(function (entry) {
-      var li = el("li", {}, [el("button", { "data-key": entry.key, text: entry.label, onclick: function () { openEntry(entry); } })]);
-      groups[entry.group].appendChild(li);
+      var btn = el("button", { "data-key": entry.key, onclick: function () { openEntry(entry); } });
+      btn.style.setProperty("--c", entry.color || "#777");
+      btn.appendChild(el("span", { class: "nav-ico", text: entry.icon || "•" }));
+      btn.appendChild(el("span", { class: "nav-lbl", text: entry.label }));
+      groups[entry.group].appendChild(el("li", {}, [btn]));
     });
   }
 
@@ -449,7 +455,8 @@
   }
 
   function enterEditor() {
-    showView("editor"); status("Signed in to " + cfg.owner + "/" + cfg.repo);
+    showView("editor"); status("");
+    var g = $("greeting"); if (g) { g.textContent = "Pick a page, make your change, then Publish ✨"; g.classList.remove("hide"); }
     buildNav(); openEntry(REGISTRY[0]); loadHistory();
   }
 
