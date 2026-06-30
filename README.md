@@ -49,8 +49,9 @@ python3 -m http.server 8765      # then open http://localhost:8765
 
 1. Push this repo to GitHub.
 2. **Settings → Pages →** Source: *Deploy from a branch* → `main` / root.
-3. The `CNAME` file already points at `uuwellesleyhills.org`. In Pages, set the custom domain and enable
-   **Enforce HTTPS**.
+3. While previewing, there is **no active `CNAME`** (kept as `CNAME.disabled`) so the `*.github.io` preview URL
+   works without redirecting to the not-yet-pointed domain. **At cutover**, rename `CNAME.disabled` → `CNAME`
+   (or just set the custom domain in **Settings → Pages**) and enable **Enforce HTTPS**.
 4. **Go live = DNS cutover.** The domain currently uses **Wix** nameservers. At the registrar, point the domain
    at GitHub Pages:
    - `A` records → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
