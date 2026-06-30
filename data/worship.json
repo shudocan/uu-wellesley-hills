@@ -2,11 +2,11 @@
   "header": {
     "eyebrow": "Worship & Music",
     "title": "Worship",
-    "lead": "Sunday services that gather us around weekly themes — to reflect, sing, and grow together."
+    "lead": "Worship services are the primary way our faith community gathers and connects over shared Unitarian Universalist values."
   },
   "services": {
     "heading": "Sunday Services",
-    "body": "From September through mid-June we worship together on Sundays at 10:30am, with services built around a weekly theme. In summer, we gather for lay-led chapel services in a more intimate setting. Whether in person or online, all are welcome.",
+    "body": "During our regular program year from September through mid-June, Sunday morning services begin at 10:30 and last an hour. ​The week’s theme is announced in our blog; music (including hymns and choir selections), readings, and the sermon reflect that theme.  Other spoken elements are repeated weekly, including chalice lighting and extinguishing words and an invitation to light candles of joy or concern.  Themes often come from the Soul Matters program, which is used by over 145 Unitarian Universalist congregations.\n\nIn summer, lay-led chapel gatherings begin at 10:30 and last 30 minutes. The time together is informal, with music, candle lighting, readings on themes, and discussion.",
     "time": "Sundays · 10:30am (Sept–mid-June)",
     "watchText": "Watch Past Services on YouTube",
     "watchHref": "https://www.youtube.com/@uuwellesleyhills"
@@ -15,19 +15,43 @@
   "traditions": {
     "heading": "Holidays & Traditions",
     "items": [
-      { "title": "Water Celebration", "text": "We begin the church year by mingling waters gathered over the summer." },
-      { "title": "Flower Communion", "text": "Each person brings a flower and takes home another — a symbol of our shared community." },
-      { "title": "Blessing of the Animals", "text": "We welcome our beloved companion animals for a blessing." },
-      { "title": "Christmas Eve Lessons & Carols", "text": "A candlelit service of readings and music." }
+      {
+        "title": "Water Celebration",
+        "text": "We begin the church year by mingling waters gathered over the summer."
+      },
+      {
+        "title": "Flower Communion",
+        "text": "Each person brings a flower and takes home another — a symbol of our shared community."
+      },
+      {
+        "title": "Blessing of the Animals",
+        "text": "We welcome our beloved companion animals for a blessing."
+      },
+      {
+        "title": "Christmas Eve Lessons & Carols",
+        "text": "A candlelit service of readings and music."
+      }
     ]
   },
   "lifecycle": {
-    "heading": "Lifecycle Celebrations",
+    "heading": "Lifecycle Celebrations - As a faith community embracing multiple generations, we mark milestones through special rites of passage.",
     "items": [
-      { "title": "Weddings", "text": "Ceremonies for all couples, including same-sex and interfaith marriages." },
-      { "title": "Child Dedications", "text": "Welcoming children with a ritual of water and rose." },
-      { "title": "Youth Passages", "text": "Bridging ceremonies and Coming of Age programs that honor growth." },
-      { "title": "Memorial Services", "text": "Celebrations of life that honor those we have loved and lost." }
+      {
+        "title": "Weddings",
+        "text": "Weddings Ceremonies are held in our Sanctuary or Chapel. Our ministers are glad to serve as marriage celebrants, for members or friends of the congregation, or for couples from the wider community.\n\nAs a Welcoming Congregation, we joyously celebrate same-sex marriages. We also honor religious pluralism and approach interfaith marriages with sensitivity and respect. Our ministers happily join with co-officiants to share in solemnizing and celebrating the couple’s commitment."
+      },
+      {
+        "title": "Child Dedications",
+        "text": "Child dedications usually take place during regular Sunday worship, with the congregation pledging support to the child’s family. The ritual involves a thorn-free rose dipped in water and a blessing. Families can request that the minister perform this rite of passage at any age, whether in infancy or later."
+      },
+      {
+        "title": "Youth Passages",
+        "text": "Youth passages are available to teens when they graduate from high school (a “bridging ceremony”) and, when numbers permit, a Coming of Age program which culminates in a spoken Credo (statement of faith)."
+      },
+      {
+        "title": "Memorial Services",
+        "text": "During a tender time of mourning, our ministers work with family and friends to craft a Memorial Service or Celebration of Life that is a fitting tribute to the one who has died. These are often held in our Sanctuary or Chapel, but can also take place at a local funeral home or graveside."
+      }
     ]
   }
 }
