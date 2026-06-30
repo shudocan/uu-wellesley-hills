@@ -24,7 +24,9 @@
     { group: "lists", key: "events",        label: "Events",        icon: "📅", color: "#e0533d", file: "data/events.json",       preview: "events.html" },
     { group: "lists", key: "announcements", label: "Announcements", icon: "📣", color: "#e8893b", file: "data/announcements.json", preview: "index.html" },
     { group: "lists", key: "__blog",        label: "Blog posts",    icon: "✍️", color: "#2c9e8f", blog: true,                     preview: "blog.html" },
-    { group: "other", key: "site",          label: "Site info (address, hours, links)", icon: "⚙️", color: "#5566cf", file: "data/site.json", preview: "index.html" }
+    { group: "other", key: "site",          label: "Site info (address, hours, links)", icon: "⚙️", color: "#5566cf", file: "data/site.json", preview: "index.html" },
+    { group: "ai",    key: "__ai",     label: "Build a page", icon: "✨", color: "#8a5cd0", ai: true },
+    { group: "ai",    key: "__aihelp", label: "Bigger changes", icon: "🚀", color: "#3a8fd0", help: true, url: "ai-help.html" }
   ];
 
   var FRIENDLY = {
@@ -266,6 +268,7 @@
   }
 
   function openEntry(entry) {
+    if (entry.help) { window.open(entry.url || "ai-help.html", "_blank"); return; }
     state.entry = entry;
     setActiveNav(entry.key);
     var t = $("editor-title"); t.innerHTML = "";
@@ -273,6 +276,8 @@
     t.appendChild(document.createTextNode(" " + entry.label));
     document.documentElement.style.setProperty("--accent-now", entry.color || "#2c9e8f");
     $("history-panel").classList.toggle("hide", false);
+    if (entry.ai) { setAiMode(true); return openAIBuilder(); }
+    setAiMode(false);
     if (entry.blog) return openBlog();
     $("editor-sub").textContent = "Loading…";
     getFile(entry.file).then(function (f) {
@@ -449,6 +454,147 @@
     }).catch(function (e) { status(""); toast("Undo failed: " + e.message, "error"); });
   }
 
+  /* ---- AI page builder (proof of concept, via Puter.js — no key/backend) -- */
+  var PAGE_EXAMPLE = [
+    '<!DOCTYPE html>',
+    '<html lang="en" data-skin="classic">',
+    '<head>',
+    '  <meta charset="utf-8">',
+    '  <meta name="viewport" content="width=device-width, initial-scale=1">',
+    '  <script>(function(){try{var t=localStorage.getItem("uuwh-theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";var s=localStorage.getItem("uuwh-skin");if(["classic","modern","seasonal"].indexOf(s)===-1)s="classic";var e=document.documentElement;e.setAttribute("data-theme",t);e.setAttribute("data-skin",s);}catch(_){}})();<\/script>',
+    '  <title>TITLE — UU Wellesley Hills</title>',
+    '  <meta name="description" content="DESCRIPTION">',
+    '  <link rel="stylesheet" href="assets/css/theme.css">',
+    '  <link rel="stylesheet" href="assets/css/styles.css">',
+    '  <link rel="stylesheet" href="assets/css/animations.css">',
+    '  <script defer src="assets/js/render.js"><\/script>',
+    '  <script defer src="assets/js/site.js"><\/script>',
+    '</head>',
+    '<body data-page="">',
+    '  <div data-include="partials/header.html"></div>',
+    '  <main id="main">',
+    '    <section class="section section--tint"><div class="container prose" data-reveal><p class="eyebrow">EYEBROW</p><h1>HEADING</h1><p class="lead">ONE-LINE INTRO</p></div></section>',
+    '    <section class="section"><div class="container prose">MAIN CONTENT (use <h2>, <p>, .grid/.card, .btn, etc.)</div></section>',
+    '  </main>',
+    '  <div data-include="partials/footer.html"></div>',
+    '</body>',
+    '</html>'
+  ].join("\n");
+
+  var AI_SYS =
+    "You generate ONE new page for the UU Wellesley Hills church website (plain static HTML). " +
+    "Keep the <head> EXACTLY as in the skeleton (theme script + the three CSS files + render.js + site.js). " +
+    "Include the header and footer exactly via the two data-include divs. Put all content inline inside <main id=\"main\"> and keep data-page empty (do NOT reference any /data JSON file). " +
+    "Use ONLY these CSS classes: section, section--tint, container, prose, grid, grid--2, grid--3, card, card__media, btn, btn--primary, btn--ghost, badge, eyebrow, lead, embed. " +
+    "For any image use <img src=\"assets/img/PLACEHOLDER.jpg\" alt=\"...\" onerror=\"this.style.display='none'\"> so it hides if missing. For signup/donate/external links use <a class=\"btn btn--primary\" href=\"URL or #\">. Warm, welcoming tone. " +
+    "SKELETON:\n" + PAGE_EXAMPLE + "\n" +
+    "Respond with ONLY a JSON object (no markdown, no backticks) with keys: slug (lowercase letters/numbers/dashes), title, navLabel (<=18 chars), summary (one sentence), html (the COMPLETE page starting with <!DOCTYPE html>). Output nothing except the JSON.";
+
+  function extractText(r) {
+    if (typeof r === "string") return r;
+    if (r && r.message && typeof r.message.content === "string") return r.message.content;
+    if (r && r.message && Array.isArray(r.message.content)) return r.message.content.map(function (c) { return c.text || ""; }).join("");
+    if (r && typeof r.text === "string") return r.text;
+    if (r && typeof r.toString === "function" && r.toString !== Object.prototype.toString) return r.toString();
+    return JSON.stringify(r);
+  }
+  function parseModelJSON(text) {
+    var t = String(text).trim().replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
+    var s = t.indexOf("{"), e = t.lastIndexOf("}");
+    if (s > -1 && e > -1) t = t.slice(s, e + 1);
+    return JSON.parse(t);
+  }
+  function setAiMode(on) {
+    $("btn-preview").classList.toggle("hide", on);
+    $("btn-publish").classList.toggle("hide", on);
+  }
+
+  function openAIBuilder() {
+    var f = $("editor-form"); f.innerHTML = "";
+    $("editor-sub").textContent = "Describe a new page in plain words — the AI drafts it, you Preview, then Publish.";
+    if (!window.puter) {
+      f.appendChild(el("div", { class: "banner-note", html: "The AI helper didn't load (check your internet connection and refresh). For bigger changes, open <b>Bigger changes</b> in the sidebar." }));
+    }
+    var ta = el("textarea", { rows: "4", id: "ai-prompt", placeholder: "e.g. Add a “Music Camp” page with a short intro, a photo, the August dates, and a button linking to our signup form." });
+    f.appendChild(el("div", { class: "field" }, [el("label", { text: "What new page would you like?" }), ta]));
+    f.appendChild(el("p", { class: "hint", html: "Examples: “A page about our community garden with two photos.” · “A Holiday Concert page with the date, time, and a Donate button.”" }));
+    f.appendChild(el("button", { type: "button", class: "btn btn--primary", onclick: function () { generatePage(ta.value); } }, ["✨ Generate page"]));
+    f.appendChild(el("p", { class: "hint", style: "margin-top:1.1rem", html: "<b>This is a brand-new feature.</b> Always <b>Preview</b> before you <b>Publish</b> — and you can always <b>Undo last change</b>. It’s best at simple new pages; for redesigns or features like forms, logins, or payments, use <b>Bigger changes</b>." }));
+    f.appendChild(el("div", { id: "ai-result" }));
+  }
+
+  function generatePage(request) {
+    request = (request || "").trim();
+    if (request.length < 8) { toast("Please describe the page in a sentence or two.", "error"); return; }
+    if (!window.puter) { toast("AI helper not available — see “Bigger changes.”", "error"); return; }
+    var out = $("ai-result"); out.innerHTML = "<p class='topbar__status'>✨ Drafting your page… this usually takes 10–20 seconds.</p>";
+    var messages = [{ role: "system", content: AI_SYS }, { role: "user", content: request }];
+    var call;
+    try { call = window.puter.ai.chat(messages, { model: "gpt-4o" }); }
+    catch (e) { call = window.puter.ai.chat(messages); }
+    Promise.resolve(call).catch(function () { return window.puter.ai.chat(messages); })
+      .then(function (resp) {
+        var text = extractText(resp), data;
+        try { data = parseModelJSON(text); }
+        catch (e) { out.innerHTML = ""; out.appendChild(el("div", { class: "banner-note", text: "The AI’s reply couldn’t be read — try rephrasing your request." })); return; }
+        if (!data.html || data.html.indexOf("<!DOCTYPE") === -1) { out.innerHTML = ""; out.appendChild(el("div", { class: "banner-note", text: "The AI didn’t return a complete page. Please try again." })); return; }
+        data.slug = (data.slug || "new-page").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "new-page";
+        renderAIResult(data);
+      })
+      .catch(function (e) {
+        out.innerHTML = ""; out.appendChild(el("div", { class: "banner-note", html: "Couldn’t reach the AI helper (" + ((e && e.message) || "error") + "). Check your connection, or use <b>Bigger changes</b>." }));
+      });
+  }
+
+  function renderAIResult(data) {
+    var out = $("ai-result"); out.innerHTML = "";
+    var nav = el("input", { type: "checkbox", id: "ai-nav" }); nav.checked = true;
+    out.appendChild(el("div", { class: "panel", style: "margin-top:1.1rem;box-shadow:none;border-style:dashed" }, [
+      el("h3", { text: "✅ Draft ready: " + (data.title || "New page") }),
+      el("p", { class: "hint", text: "Web address: " + data.slug + ".html   ·   Menu label: " + (data.navLabel || data.title || "") }),
+      el("p", { text: data.summary || "" }),
+      el("label", { style: "display:flex;gap:.5rem;align-items:center;margin:.5rem 0" }, [nav, document.createTextNode("Add it to the top menu")]),
+      el("div", { style: "display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem" }, [
+        el("button", { type: "button", class: "btn btn--ghost", onclick: function () { previewAIPage(data.html); } }, ["👁 Preview"]),
+        el("button", { type: "button", class: "btn btn--primary", onclick: function () { publishAIPage(data); } }, ["Publish page"]),
+        el("button", { type: "button", class: "btn btn--ghost", onclick: function () { generatePage($("ai-prompt").value); } }, ["↻ Try again"])
+      ])
+    ]));
+  }
+
+  function previewAIPage(html) {
+    var siteRoot = location.href.replace(/admin\/.*$/, "");
+    var withBase = html.replace(/<head([^>]*)>/i, '<head$1>\n  <base href="' + siteRoot + '">');
+    var w = window.open("", "_blank");
+    if (!w) { toast("Please allow pop-ups to see the preview.", "error"); return; }
+    w.document.open(); w.document.write(withBase); w.document.close();
+  }
+
+  function publishAIPage(data) {
+    var addNav = $("ai-nav") && $("ai-nav").checked;
+    status("Publishing new page…");
+    putFile(data.slug + ".html", data.html, "Add page: " + (data.title || data.slug) + " [admin/AI]")
+      .then(function () {
+        if (!addNav) return null;
+        return getFile("partials/header.html").then(function (hf) {
+          var anchor = '<li><a class="nav__link" href="index.html">Home</a></li>';
+          if (hf.text.indexOf('href="' + data.slug + '.html"') > -1 || hf.text.indexOf(anchor) === -1) return null;
+          var li = '\n      <li><a class="nav__link" href="' + data.slug + '.html">' + (data.navLabel || data.title || data.slug) + '</a></li>';
+          return putFile("partials/header.html", hf.text.replace(anchor, anchor + li), "Add menu link: " + (data.title || data.slug) + " [admin/AI]", hf.sha);
+        });
+      })
+      .then(function () {
+        status(""); toast("✅ Page published — live in about a minute.", "ok"); loadHistory();
+        var url = location.href.replace(/admin\/.*$/, "") + data.slug + ".html";
+        $("ai-result").appendChild(el("p", { class: "hint", style: "margin-top:.7rem", html: 'Your new page: <a href="' + url + '" target="_blank">' + url + '</a>. If anything looks off, open any page on the left and click <b>Undo last change</b>.' }));
+      })
+      .catch(function (e) {
+        status("");
+        if (e.status === 422) toast("A page with that web address already exists — try a different name.", "error");
+        else toast("Publish failed: " + e.message, "error");
+      });
+  }
+
   /* ---- nav + views -------------------------------------------------------- */
   function setActiveNav(key) {
     document.querySelectorAll(".navlist button").forEach(function (b) {
@@ -456,14 +602,14 @@
     });
   }
   function buildNav() {
-    var groups = { pages: $("nav-pages"), lists: $("nav-lists"), other: $("nav-other") };
-    Object.keys(groups).forEach(function (g) { groups[g].innerHTML = ""; });
+    var groups = { pages: $("nav-pages"), lists: $("nav-lists"), other: $("nav-other"), ai: $("nav-ai") };
+    Object.keys(groups).forEach(function (g) { if (groups[g]) groups[g].innerHTML = ""; });
     REGISTRY.forEach(function (entry) {
       var btn = el("button", { "data-key": entry.key, onclick: function () { openEntry(entry); } });
       btn.style.setProperty("--c", entry.color || "#777");
       btn.appendChild(el("span", { class: "nav-ico", text: entry.icon || "•" }));
       btn.appendChild(el("span", { class: "nav-lbl", text: entry.label }));
-      groups[entry.group].appendChild(el("li", {}, [btn]));
+      var host = groups[entry.group]; if (host) host.appendChild(el("li", {}, [btn]));
     });
   }
 
