@@ -1,0 +1,74 @@
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav" aria-label="Primary">
+    <a class="nav__brand" href="index.html">
+      <img src="assets/img/logo.svg" alt="" width="42" height="42" onerror="this.style.display='none'">
+      <span>UU Wellesley Hills</span>
+    </a>
+
+    <button class="icon-btn nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
+
+    <ul class="nav__menu" id="primary-menu">
+      <li><a class="nav__link" href="index.html">Home</a></li>
+
+      <li>
+        <a class="nav__link" href="worship.html" aria-expanded="false">Worship &amp; Music</a>
+        <ul class="nav__submenu">
+          <li><a href="worship.html">Worship</a></li>
+          <li><a href="music.html">Music</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="nav__link" href="about.html" aria-expanded="false">About &amp; Visitors</a>
+        <ul class="nav__submenu">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="engage.html">Engage &amp; Connect</a></li>
+          <li><a href="visitor-faqs.html">Visitor FAQs</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="nav__link" href="events.html" aria-expanded="false">News &amp; Events</a>
+        <ul class="nav__submenu">
+          <li><a href="events.html">Calendar &amp; Events</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="events.html#newsletter">Newsletter</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a class="nav__link" href="rentals.html" aria-expanded="false">Rentals</a>
+        <ul class="nav__submenu">
+          <li><a href="rentals.html">Rental Options</a></li>
+          <li><a href="rental-inquiry.html">Rental Inquiry</a></li>
+        </ul>
+      </li>
+
+      <li><a class="nav__link" href="members.html">Members</a></li>
+    </ul>
+
+    <span class="nav__spacer"></span>
+
+    <div class="nav__utils">
+      <a class="btn btn--primary" data-bind-href="site:links.give" href="#">Give</a>
+      <button class="icon-btn" id="theme-quick" aria-label="Toggle light/dark" title="Toggle light/dark">◐</button>
+      <button class="icon-btn" id="theme-btn" aria-label="Appearance settings" aria-haspopup="true" title="Appearance">✦</button>
+    </div>
+
+    <div class="theme-pop" id="theme-pop" role="dialog" aria-label="Appearance" hidden>
+      <h4>Mode</h4>
+      <div class="seg" role="group" aria-label="Color mode">
+        <button data-set-theme="light" aria-pressed="false">☀ Light</button>
+        <button data-set-theme="dark" aria-pressed="false">🌙 Dark</button>
+      </div>
+      <h4>Theme</h4>
+      <div class="seg" role="group" aria-label="Theme skin">
+        <button data-set-skin="classic" aria-pressed="false">Classic</button>
+        <button data-set-skin="modern" aria-pressed="false">Modern</button>
+        <button data-set-skin="seasonal" aria-pressed="false">Seasonal</button>
+      </div>
+    </div>
+  </nav>
+</header>

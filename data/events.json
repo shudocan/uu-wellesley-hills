@@ -1,0 +1,28 @@
+{
+  "upcoming": [
+    {
+      "title": "Black Lives Matter Vigil",
+      "date": "Mon, July 7 · 5:00pm",
+      "location": "309 Washington St, Wellesley Hills",
+      "image": "assets/img/event-vigil.jpg",
+      "description": "A monthly standing vigil for racial justice in front of our meetinghouse. All are welcome.",
+      "href": "events.html"
+    },
+    {
+      "title": "Women's TGIF",
+      "date": "Thu, July 10 · 6:30pm",
+      "location": "64 Lakeview Rd, Framingham",
+      "image": "assets/img/event-tgif.jpg",
+      "description": "Casual fellowship and conversation. Bring a friend.",
+      "href": "events.html"
+    },
+    {
+      "title": "Black Lives Matter Vigil",
+      "date": "Mon, August 4 · 5:00pm",
+      "location": "309 Washington St, Wellesley Hills",
+      "image": "assets/img/event-vigil.jpg",
+      "description": "A monthly standing vigil for racial justice in front of our meetinghouse.",
+      "href": "events.html"
+    }
+  ]
+}

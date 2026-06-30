@@ -1,0 +1,124 @@
+/* ==========================================================================
+   theme.css — Theming engine for UU Wellesley Hills
+   Per-visitor light/dark + selectable skins (classic / modern / seasonal).
+   Set via [data-theme] and [data-skin] on <html>; persisted in localStorage.
+   An inline <head> snippet applies saved values before paint (no flash).
+   ========================================================================== */
+
+/* ---- Base semantic tokens (defaults = Classic / Light) ------------------- */
+:root {
+  /* Brand hues — overridden per skin below */
+  --brand-h: 18;          /* warm terracotta */
+  --brand-s: 55%;
+  --accent-h: 38;         /* gold */
+  --accent-s: 70%;
+
+  /* Surfaces & text (overridden per theme below) */
+  --bg:            hsl(36 40% 97%);
+  --surface:       hsl(0 0% 100%);
+  --surface-2:     hsl(36 30% 94%);
+  --text:          hsl(24 18% 16%);
+  --muted:         hsl(24 10% 40%);
+  --border:        hsl(30 20% 86%);
+  --shadow-color:  24 30% 20%;
+
+  /* Derived brand colors */
+  --primary:          hsl(var(--brand-h) var(--brand-s) 42%);
+  --primary-hover:    hsl(var(--brand-h) var(--brand-s) 36%);
+  --primary-contrast: hsl(0 0% 100%);
+  --accent:           hsl(var(--accent-h) var(--accent-s) 52%);
+  --accent-contrast:  hsl(24 40% 14%);
+  --link:             hsl(var(--brand-h) var(--brand-s) 38%);
+
+  /* Typography */
+  --font-head: "Georgia", "Iowan Old Style", "Palatino", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --fs-base: 1.0625rem;
+  --lh-base: 1.65;
+
+  /* Spacing / layout */
+  --maxw: 1120px;
+  --maxw-prose: 70ch;
+  --gap: clamp(1rem, 3vw, 2rem);
+  --radius: 14px;
+  --radius-sm: 8px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 0.45s;
+
+  color-scheme: light;
+}
+
+/* ---- Skins: re-map brand hues & fonts ------------------------------------ */
+:root[data-skin="classic"] {
+  --brand-h: 18;  --brand-s: 55%;
+  --accent-h: 38; --accent-s: 70%;
+  --font-head: "Georgia", "Iowan Old Style", "Palatino", serif;
+}
+
+:root[data-skin="modern"] {
+  --brand-h: 211; --brand-s: 64%;   /* deep blue */
+  --accent-h: 168; --accent-s: 62%; /* teal */
+  --font-head: "Helvetica Neue", system-ui, sans-serif;
+  --radius: 10px;
+}
+
+:root[data-skin="seasonal"] {
+  --brand-h: 142; --brand-s: 38%;   /* sage green */
+  --accent-h: 24;  --accent-s: 68%; /* harvest orange */
+  --font-head: "Palatino Linotype", "Georgia", serif;
+}
+
+/* ---- Light theme surfaces, per skin (subtle tonal backgrounds) ----------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg:        hsl(var(--brand-h) 30% 97%);
+  --surface:   hsl(0 0% 100%);
+  --surface-2: hsl(var(--brand-h) 26% 94%);
+  --text:      hsl(var(--brand-h) 18% 15%);
+  --muted:     hsl(var(--brand-h) 8% 40%);
+  --border:    hsl(var(--brand-h) 18% 87%);
+  --shadow-color: var(--brand-h) 30% 20%;
+  --primary:          hsl(var(--brand-h) var(--brand-s) 40%);
+  --primary-hover:    hsl(var(--brand-h) var(--brand-s) 33%);
+  --primary-contrast: hsl(0 0% 100%);
+  --accent:           hsl(var(--accent-h) var(--accent-s) 50%);
+  --accent-contrast:  hsl(var(--brand-h) 40% 12%);
+  --link:             hsl(var(--brand-h) var(--brand-s) 36%);
+}
+
+/* ---- Dark theme surfaces, per skin --------------------------------------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:        hsl(var(--brand-h) 18% 9%);
+  --surface:   hsl(var(--brand-h) 16% 13%);
+  --surface-2: hsl(var(--brand-h) 16% 17%);
+  --text:      hsl(var(--brand-h) 12% 92%);
+  --muted:     hsl(var(--brand-h) 8% 66%);
+  --border:    hsl(var(--brand-h) 14% 26%);
+  --shadow-color: 0 0% 0%;
+  --primary:          hsl(var(--brand-h) calc(var(--brand-s) - 8%) 62%);
+  --primary-hover:    hsl(var(--brand-h) calc(var(--brand-s) - 8%) 70%);
+  --primary-contrast: hsl(var(--brand-h) 30% 10%);
+  --accent:           hsl(var(--accent-h) var(--accent-s) 62%);
+  --accent-contrast:  hsl(var(--brand-h) 30% 10%);
+  --link:             hsl(var(--accent-h) var(--accent-s) 70%);
+}
+
+/* Fallback when no data-theme set yet: respect OS preference. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --bg:        hsl(18 18% 9%);
+    --surface:   hsl(18 16% 13%);
+    --surface-2: hsl(18 16% 17%);
+    --text:      hsl(18 12% 92%);
+    --muted:     hsl(18 8% 66%);
+    --border:    hsl(18 14% 26%);
+    --primary:          hsl(18 47% 62%);
+    --primary-contrast: hsl(18 30% 10%);
+    --accent:           hsl(38 70% 62%);
+    --link:             hsl(38 70% 70%);
+  }
+}

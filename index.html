@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    /* No-flash theme: apply saved theme/skin before first paint. */
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin');
+      if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) { var e = document.documentElement; e.setAttribute('data-theme','light'); e.setAttribute('data-skin','classic'); } })();
+  </script>
+  <title>UU Wellesley Hills — A Welcoming Unitarian Universalist Congregation</title>
+  <meta name="description" content="Unitarian Universalist Society in Wellesley Hills, MA. Our only creed is love. Join us for Sunday worship, music, and community.">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="home" data-datasets="events,announcements">
+  <div data-include="partials/header.html"></div>
+
+  <!-- Alert banner -->
+  <div class="banner" data-show="banner.show">
+    <span data-bind="banner.text">Notice</span><a data-bind="banner.linkText" data-bind-href="banner.linkHref" href="#">More</a>
+  </div>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__bg"><img data-bind-src="hero.image" src="assets/img/hero.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div class="hero__inner">
+        <p class="hero__tagline" data-bind="hero.tagline">Our only creed is love</p>
+        <h1 data-bind="hero.heading">A community of faith in Wellesley Hills</h1>
+        <div class="hero__cta">
+          <a class="btn btn--primary" data-bind="hero.ctaPrimaryText" data-bind-href="hero.ctaPrimaryHref" href="#">Plan Your Visit</a>
+          <a class="btn btn--ghost" data-bind="hero.ctaSecondaryText" data-bind-href="hero.ctaSecondaryHref" href="#" style="color:#fff;border-color:rgba(255,255,255,.6)">About Us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next service + fellowship -->
+    <section class="section">
+      <div class="container grid grid--2" data-stagger>
+        <div class="card" data-reveal>
+          <p class="eyebrow" data-bind="nextService.label">Next Service</p>
+          <h3 data-bind="nextService.title">Sunday Worship</h3>
+          <p class="card__meta"><strong data-bind="nextService.datetime">Sunday · 10:30am</strong><br><span data-bind="nextService.location">Location</span></p>
+          <p data-bind="nextService.details">Service details.</p>
+          <a class="btn btn--accent" data-bind="nextService.watchText" data-bind-href="nextService.watchHref" href="#">Watch the Livestream</a>
+        </div>
+        <div class="card" data-reveal="right">
+          <p class="eyebrow">Connect</p>
+          <h3 data-bind="fellowship.title">Fellowship Hour</h3>
+          <p data-bind="fellowship.text">Join us on Zoom after worship.</p>
+          <a class="btn btn--ghost" data-bind="fellowship.linkText" data-bind-href="fellowship.linkHref" href="#">Join on Zoom</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Welcome / mission -->
+    <section class="section section--tint">
+      <div class="container prose center" data-reveal>
+        <p class="eyebrow" data-bind="welcome.eyebrow">Welcome</p>
+        <h2 data-bind="welcome.heading">Building a community of faith</h2>
+        <p class="lead" data-bind="welcome.body">Mission statement.</p>
+      </div>
+    </section>
+
+    <!-- Shared values -->
+    <section class="section">
+      <div class="container grid grid--2">
+        <div data-reveal="left">
+          <h2 data-bind="values.heading">Our Shared Values</h2>
+          <p data-bind="values.body">Values description.</p>
+          <p><span class="badge" data-bind="values.welcoming">LGBTQ+ Welcoming Congregation</span></p>
+        </div>
+        <div data-reveal="right" class="center">
+          <img data-bind-src="values.image" src="assets/img/shared-values.png" alt="UU Shared Values: love at the center, surrounded by interdependence, pluralism, justice, transformation, generosity, and equity" style="max-width:420px;margin-inline:auto" onerror="this.style.display='none'">
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming events -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="center" data-reveal><p class="eyebrow">Calendar</p><h2>Upcoming Events</h2></div>
+        <div class="grid grid--3" data-list="events:upcoming" data-stagger style="margin-top:2rem">
+          <template>
+            <article class="card" data-reveal>
+              <div class="card__media"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
+              <p class="card__meta" data-bind="date">Date</p>
+              <h3 data-bind="title">Event</h3>
+              <p class="muted" data-bind="location">Location</p>
+              <p data-bind="description">Details</p>
+              <a class="btn btn--ghost" data-bind-href="href" href="#">Learn more</a>
+            </article>
+          </template>
+        </div>
+        <p class="center" style="margin-top:1.5rem"><a class="btn btn--primary" href="events.html">View Full Calendar</a></p>
+      </div>
+    </section>
+
+    <!-- Announcements / latest posts -->
+    <section class="section">
+      <div class="container">
+        <div class="center" data-reveal><p class="eyebrow">News</p><h2>From Our Blog</h2></div>
+        <div class="grid grid--3" data-list="announcements:items" data-stagger style="margin-top:2rem">
+          <template>
+            <article class="card" data-reveal>
+              <p class="card__meta" data-bind="date">Date</p>
+              <h3 data-bind="title">Post title</h3>
+              <p data-bind="summary">Summary</p>
+              <a data-bind-href="href" href="#">Read more →</a>
+            </article>
+          </template>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

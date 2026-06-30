@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "UU Wellesley Hills — A Welcoming Unitarian Universalist Congregation",
+    "description": "Unitarian Universalist Society in Wellesley Hills, MA. Our only creed is love. Join us for Sunday worship, music, and community."
+  },
+  "banner": {
+    "show": true,
+    "text": "Summer services have begun — join us Sundays at 10:30am. ",
+    "linkText": "See the summer schedule →",
+    "linkHref": "worship.html"
+  },
+  "hero": {
+    "tagline": "Our only creed is love",
+    "heading": "A community of faith in Wellesley Hills",
+    "image": "assets/img/hero.jpg",
+    "ctaPrimaryText": "Plan Your Visit",
+    "ctaPrimaryHref": "visitor-faqs.html",
+    "ctaSecondaryText": "About Us",
+    "ctaSecondaryHref": "about.html"
+  },
+  "nextService": {
+    "label": "Next Service",
+    "title": "Sunday Worship",
+    "datetime": "Sunday, July 5 · 10:30–11:30am",
+    "location": "First Parish Needham",
+    "details": "Led by Rev. Mark Robel; preaching by Rev. Mel Pace.",
+    "watchText": "Watch the Livestream",
+    "watchHref": "https://www.youtube.com/@uuwellesleyhills/streams"
+  },
+  "fellowship": {
+    "title": "Fellowship Hour",
+    "text": "Join us on Zoom after Sunday worship for coffee and conversation.",
+    "linkText": "Join Fellowship on Zoom",
+    "linkHref": "https://zoom.us/j/92584279314"
+  },
+  "welcome": {
+    "eyebrow": "Welcome",
+    "heading": "Building a community of faith",
+    "body": "We are a Unitarian Universalist congregation that inspires spiritual growth and just, responsible action. Wherever you are on your journey, you are welcome here — to question, to wonder, and to belong."
+  },
+  "values": {
+    "heading": "Our Shared Values",
+    "body": "Love is at the center of our faith, surrounded by interdependence, pluralism, justice, transformation, generosity, and equity — the UU Shared Values adopted in June 2024.",
+    "image": "assets/img/shared-values.png",
+    "welcoming": "LGBTQ+ Welcoming Congregation"
+  }
+}

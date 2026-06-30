@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin');
+      if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Page Not Found — UU Wellesley Hills</title>
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+</head>
+<body data-page="">
+  <div data-include="partials/header.html"></div>
+  <main id="main" class="section">
+    <div class="container prose center">
+      <p class="eyebrow">404</p>
+      <h1>We couldn't find that page</h1>
+      <p class="lead">The page may have moved. Let's get you back on the path.</p>
+      <p><a class="btn btn--primary" href="index.html">Return Home</a> <a class="btn btn--ghost" href="visitor-faqs.html">Visitor FAQs</a></p>
+    </div>
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>

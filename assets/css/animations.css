@@ -1,0 +1,61 @@
+/* ==========================================================================
+   animations.css — Modern, tasteful motion. All effects respect
+   prefers-reduced-motion. ("Flash" = these CSS/JS animations, not Adobe Flash.)
+   ========================================================================== */
+
+/* Scroll-reveal: elements with [data-reveal] start hidden, .is-visible added
+   by an IntersectionObserver in site.js. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
+[data-reveal="left"]  { transform: translateX(-26px); }
+[data-reveal="right"] { transform: translateX(26px); }
+[data-reveal="zoom"]  { transform: scale(0.94); }
+[data-reveal].is-visible[data-reveal] { transform: none; }
+
+/* Stagger children via inline --i index set in site.js */
+[data-stagger] > * { transition-delay: calc(var(--i, 0) * 80ms); }
+
+/* Hero text rise on load */
+.hero h1, .hero__tagline, .hero__cta {
+  animation: rise 0.9s var(--ease) both;
+}
+.hero__tagline { animation-delay: 0.12s; }
+.hero__cta { animation-delay: 0.24s; }
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Subtle gradient drift behind hero overlay */
+@keyframes drift {
+  from { transform: scale(1.05) translate3d(0, 0, 0); }
+  to   { transform: scale(1.12) translate3d(0, -1.5%, 0); }
+}
+.hero__bg img { animation: drift 18s ease-in-out infinite alternate; }
+
+/* Link underline grow */
+.nav__link { position: relative; }
+.nav__link::before {
+  content: ""; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0.3rem; height: 2px;
+  background: var(--primary); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+.nav__link:hover::before, .nav__link[aria-current="page"]::before { transform: scaleX(1); }
+
+/* Theme transition flash guard — brief crossfade handled by body transition. */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .hero__bg img { animation: none !important; }
+}
