@@ -118,6 +118,7 @@
         <div class="grid grid--3" data-list="announcements:items" data-stagger style="margin-top:2rem">
           <template>
             <article class="card" data-reveal>
+              <div class="card__media"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
               <p class="card__meta" data-bind="date">Date</p>
               <h3 data-bind="title">Post title</h3>
               <p data-bind="summary">Summary</p>

@@ -38,6 +38,7 @@
         <div class="grid grid--2" data-list="ensembles.items" data-stagger style="margin-top:1.5rem">
           <template>
             <div class="card" data-reveal>
+              <div class="card__media"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
               <h3 data-bind="title">Ensemble</h3>
               <p class="muted" data-bind="text">Description</p>
             </div>

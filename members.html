@@ -37,6 +37,7 @@
         <div class="grid grid--2" data-list="cards" data-stagger>
           <template>
             <div class="card" data-reveal>
+              <div class="card__media"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
               <h3 data-bind="title">Resource</h3>
               <p class="muted" data-bind="text">Description</p>
               <a class="btn btn--primary" data-bind="buttonText" data-bind-href="href" href="#" target="_blank" rel="noopener">Open</a>

@@ -127,6 +127,13 @@
   var state = { entry: null, current: null, sha: null, sub: "" };
 
   function isImageKey(k) { return k === "image" || /image$/i.test(k); }
+  function objHasImage(o) { return o && typeof o === "object" && !Array.isArray(o) && Object.keys(o).some(isImageKey); }
+  function addPhotoButton(container, path) {
+    container.appendChild(el("button", {
+      type: "button", class: "btn btn--ghost btn--small addphoto",
+      onclick: function () { var o = getPath(state.current, path); if (o && !objHasImage(o)) { o.image = ""; renderForm(); } }
+    }, ["📷 Add a photo"]));
+  }
 
   function buildField(key, value, path) {
     var label = humanize(key);
@@ -183,6 +190,7 @@
       box.appendChild(bar);
       if (item && typeof item === "object" && !Array.isArray(item)) {
         Object.keys(item).forEach(function (k) { box.appendChild(buildField(k, item[k], path.concat(i, k))); });
+        if (!objHasImage(item)) addPhotoButton(box, path.concat(i));
       } else {
         box.appendChild(buildField("item", item, path.concat(i)));
       }
@@ -222,7 +230,7 @@
     });
     return el("div", { class: "field" }, [
       el("label", { text: label }),
-      el("div", { class: "imgfield" }, [thumb, el("div", { class: "imgctrls" }, [pathInput, el("div", {}, [btn]), el("span", { class: "hint", text: "Or paste an image path above." })])])
+      el("div", { class: "imgfield" }, [thumb, el("div", { class: "imgctrls" }, [pathInput, el("div", {}, [btn]), file, el("span", { class: "hint", text: "Or paste an image path above." })])])
     ]);
   }
 
@@ -335,6 +343,17 @@
     });
     var body = el("textarea", { rows: "16" });
     form.appendChild(el("div", { class: "field" }, [el("label", { text: "Post text (Markdown: # heading, **bold**, - list)" }), body]));
+
+    // Optional post photo
+    var imgThumb = el("img", { src: meta.image ? "../" + meta.image : "", alt: "", style: "width:140px;height:90px;object-fit:cover;border-radius:10px;border:1px solid var(--a-border);background:#f0eef5;display:block;margin-bottom:.5rem" });
+    var imgFile = el("input", { type: "file", accept: "image/*", class: "hide" });
+    var imgBtn = el("button", { type: "button", class: "btn btn--ghost btn--small", onclick: function () { imgFile.click(); } }, ["Upload photo"]);
+    imgFile.addEventListener("change", function () {
+      if (!imgFile.files[0]) return;
+      uploadImage(imgFile.files[0]).then(function (p) { meta.image = p; imgThumb.src = "../" + p; toast("Photo added. Click Publish post.", "ok"); })
+        .catch(function (e) { toast("Upload failed: " + e.message, "error"); });
+    });
+    form.appendChild(el("div", { class: "field" }, [el("label", { text: "Photo (optional)" }), imgThumb, imgBtn, imgFile]));
     var actions = el("div", {}, [
       el("button", { type: "button", class: "btn btn--primary", onclick: save }, ["Publish post"]),
       " ",

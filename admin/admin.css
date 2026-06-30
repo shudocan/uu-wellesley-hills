@@ -117,6 +117,7 @@ fieldset.group > legend { font-weight: 800; padding: 0 .5rem; color: color-mix(i
 .repeat-item { border: 1.5px dashed var(--a-border-strong); border-radius: 16px; padding: 1.1rem 1.1rem .35rem; margin-bottom: .9rem; background: #fff; }
 .repeat-item__bar { display: flex; gap: .4rem; justify-content: flex-end; margin-bottom: .6rem; }
 .repeat-add { margin-bottom: 1rem; }
+.addphoto { margin: .1rem 0 .7rem; }
 
 .imgfield { display: flex; gap: 1rem; align-items: center; }
 .imgfield img { width: 92px; height: 92px; object-fit: cover; border-radius: 14px; border: 1px solid var(--a-border); background: #f3eef7; }

@@ -40,7 +40,10 @@
               <template>
                 <details>
                   <summary data-bind="q">Question</summary>
-                  <div data-bind="a">Answer</div>
+                  <div>
+                    <p data-bind="a">Answer</p>
+                    <div class="card__media" style="max-width:460px"><img data-bind-src="image" src="" alt="" onerror="this.closest('.card__media').style.display='none'"></div>
+                  </div>
                 </details>
               </template>
             </div>
