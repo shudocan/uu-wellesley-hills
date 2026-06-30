@@ -1,9 +1,10 @@
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <nav class="nav" aria-label="Primary">
-    <a class="nav__brand" href="index.html">
-      <img src="assets/img/logo.svg" alt="" width="42" height="42" onerror="this.style.display='none'">
-      <span>UU Wellesley Hills</span>
+    <a class="nav__brand" href="index.html" aria-label="UU Wellesley Hills home">
+      <img class="nav__logo" src="assets/img/logo.png" alt="UU Wellesley Hills" height="40"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+      <span style="display:none">UU Wellesley Hills</span>
     </a>
 
     <button class="icon-btn nav__toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-menu">☰</button>
@@ -52,6 +53,7 @@
     <span class="nav__spacer"></span>
 
     <div class="nav__utils">
+      <a class="icon-btn" href="search.html" aria-label="Search" title="Search">⌕</a>
       <a class="btn btn--primary" data-bind-href="site:links.give" href="#">Give</a>
       <button class="icon-btn" id="theme-quick" aria-label="Toggle light/dark" title="Toggle light/dark">◐</button>
       <button class="icon-btn" id="theme-btn" aria-label="Appearance settings" aria-haspopup="true" title="Appearance">✦</button>

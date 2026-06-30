@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" data-skin="classic">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () { try {
+      var t = localStorage.getItem('uuwh-theme');
+      if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      var s = localStorage.getItem('uuwh-skin'); if (['classic','modern','seasonal'].indexOf(s) === -1) s = 'classic';
+      var e = document.documentElement; e.setAttribute('data-theme', t); e.setAttribute('data-skin', s);
+    } catch (_) {} })();
+  </script>
+  <title>Search — UU Wellesley Hills</title>
+  <meta name="description" content="Search the UU Wellesley Hills website.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <script defer src="assets/js/render.js"></script>
+  <script defer src="assets/js/site.js"></script>
+  <script defer src="assets/js/search.js"></script>
+</head>
+<body data-page="">
+  <div data-include="partials/header.html"></div>
+  <main id="main">
+    <section class="section">
+      <div class="container" style="max-width:760px">
+        <h1>Search</h1>
+        <form id="search-form" class="form" role="search">
+          <label class="field">
+            <span class="hint">Search the website</span>
+            <input type="search" id="search-input" name="q" placeholder="Try: worship, rentals, music, give…" autofocus>
+          </label>
+        </form>
+        <div id="search-results" style="margin-top:1.5rem"><p class="muted">Type above to search the site.</p></div>
+      </div>
+    </section>
+  </main>
+  <div data-include="partials/footer.html"></div>
+</body>
+</html>
