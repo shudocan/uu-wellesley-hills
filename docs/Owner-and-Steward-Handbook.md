@@ -125,9 +125,11 @@ Please follow existing patterns, keep the admin and theming intact, and preview 
 
 ## One-time handover checklist
 
-- [ ] A steward creates the free GitHub organization **`uuwellesleyhills`** (github.com/account/organizations/new → Free plan).
-- [ ] Transfer the repository into the org (the current owner can do this in seconds).
-- [ ] Re-enable **GitHub Pages** under the org.
+> **⚠️ Important — do the org transfer only at launch.** Moving the repository to the `uuwellesleyhills` organization **changes the site's web address**, and GitHub does **not** redirect the old address (the old link goes dead). So transfer the repo **once, together with the domain (DNS) cutover** — not before. Until launch, the site stays under the `shudocan` account and its current address keeps working. The org can sit empty and ready in the meantime.
+
+- [ ] A steward creates the free GitHub organization **`uuwellesleyhills`** (github.com/account/organizations/new → Free plan). *(Already done — it exists, empty, ready for launch.)*
+- [ ] **At launch (with the DNS cutover):** transfer the repository into the org (the current owner can do this in seconds), then re-enable **GitHub Pages** under the org. Doing both at once means the address changes only a single time.
+- [ ] After the transfer: **re-issue editor access codes** under the org (Resource owner = `uuwellesleyhills`), confirm the org **allows fine-grained tokens**, and have editors sign in with account `uuwellesleyhills`.
 - [ ] Add **Timothy Fulham** and a **third steward** as org **owners**, and to the **Stewards** list. (You start with Andrew Weaver + Timothy Fulham — recruit one more to reach three.)
 - [ ] Track down the **Bluehost** domain login (church office).
 - [ ] Set up **Formspree** for the rental form under a church email.
